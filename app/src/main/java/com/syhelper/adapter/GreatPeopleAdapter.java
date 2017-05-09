@@ -22,10 +22,10 @@ import java.util.List;
 public class GreatPeopleAdapter extends PagerAdapter implements View.OnClickListener {
 
     Context mContext;
-    List<String> mData;
+    ArrayList<String> mData=null;
     List<ImageView> mViews = new ArrayList<>();
 
-    public GreatPeopleAdapter(Context mContext, List<String> mData) {
+    public GreatPeopleAdapter(Context mContext, ArrayList<String> mData) {
         this.mContext = mContext;
         this.mData = mData;
 
@@ -67,6 +67,8 @@ public class GreatPeopleAdapter extends PagerAdapter implements View.OnClickList
 
     @Override
     public void onClick(View v) {
-        mContext.startActivity(new Intent(mContext, PhotoActivity.class));
+        Intent intent=new Intent(mContext, PhotoActivity.class);
+        intent.putStringArrayListExtra("Urls",mData);
+        mContext.startActivity(intent);
     }
 }

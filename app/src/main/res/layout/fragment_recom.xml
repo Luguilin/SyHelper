@@ -6,10 +6,7 @@
     android:focusableInTouchMode="true"
     android:orientation="vertical">
 
-
-
     <in.srain.cube.views.ptr.PtrClassicFrameLayout
-        xmlns:cube_ptr="http://schemas.android.com/apk/res-auto"
         android:id="@+id/rotate_header_list_view_frame"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -19,6 +16,8 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:background="@color/white"
+            android:padding="10dp"
+            android:dividerHeight="10dp"
             android:divider="@color/white"
             android:gravity="center" />
     </in.srain.cube.views.ptr.PtrClassicFrameLayout>

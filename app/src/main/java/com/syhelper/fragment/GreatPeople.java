@@ -38,7 +38,7 @@ public class GreatPeople extends BaseFragment implements PullToRefreshBase.OnRef
     @BindView(R.id.refresh_listView)
     PullToRefreshListView mRefreshListView;
 
-    List<String> mData;
+    ArrayList<String> mData;
 
     @BindView(R.id.drawer_layout)
     MyDrawerLayout mDrawerLayout;
@@ -91,7 +91,7 @@ public class GreatPeople extends BaseFragment implements PullToRefreshBase.OnRef
 //                MyGalleryViewPager viewPager=holder.getView(R.id.vp_picture);
                 ViewPager viewPager = holder.getView(R.id.vp_picture);
 
-                viewPager.setAdapter(new GreatPeopleAdapter(mContext, mData));
+                viewPager.setAdapter(new GreatPeopleAdapter(mContext, new ArrayList<>(mData)));
                 viewPager.setOffscreenPageLimit(3);
 //                viewPager.setClipChildren(false);
                 viewPager.setPageMargin(20);

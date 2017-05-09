@@ -13,6 +13,7 @@ public class AppConfig {
     public static String userName = "18809482891";
     public static String pwd = "123456";
 
+    public static String video1="http://mvvideo1.meitudata.com/58ce8dc5de0d85240.mp4";
     /**199302
      * http://mvvideo1.meitudata.com/58ce8dc5de0d85240.mp4
      * http://mvvideo2.meitudata.com/58ce9d5a800fc4823.mp4

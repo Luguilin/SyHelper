@@ -1,5 +1,6 @@
 package com.syhelper.httpBean;
 
+import com.syhelper.bean.MasterShow;
 import com.syhelper.bean.Recommend;
 import com.syhelper.bean.Route;
 import com.syhelper.bean.ShowImage;
@@ -26,8 +27,8 @@ public class RecommendResponse {
     JSONObject imageShows;
     Map<String,Video> videos;
     Map<String,List<ShowImage>> imageShowImages;
-    JSONObject masterShows;
-    com.syhelper.bean.Route routes;
+    Map<String,MasterShow> masterShows;
+    Map<String,com.syhelper.bean.Route> routes;
     int nowPage;
 
     public int getNowIndex() {
@@ -54,7 +55,7 @@ public class RecommendResponse {
         return imageShows;
     }
 
-    public JSONObject getMasterShows() {
+    public Map<String, MasterShow> getMasterShows() {
         return masterShows;
     }
 
@@ -62,8 +63,7 @@ public class RecommendResponse {
         return masterWorks;
     }
 
-    public Route getRoutes() {
+    public Map<String, Route> getRoutes() {
         return routes;
     }
-
 }

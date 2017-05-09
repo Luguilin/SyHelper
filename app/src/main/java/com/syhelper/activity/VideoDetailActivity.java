@@ -5,6 +5,7 @@ import android.view.View;
 import android.widget.TextView;
 
 import com.squareup.picasso.Picasso;
+import com.syhelper.AppConfig;
 import com.syhelper.DataListener;
 import com.syhelper.R;
 import com.syhelper.api.ApiConfig;
@@ -18,6 +19,7 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 import fm.jiecao.jcvideoplayer_lib.JCVideoPlayer;
+import fm.jiecao.jcvideoplayer_lib.JCVideoPlayerManager;
 import fm.jiecao.jcvideoplayer_lib.JCVideoPlayerStandard;
 
 public class VideoDetailActivity extends BaseActivity {
@@ -28,7 +30,7 @@ public class VideoDetailActivity extends BaseActivity {
     JCVideoPlayerStandard videoplayer;
     @BindView(R.id.tv_context)
     TextView tvContext;
-   @BindView(R.id.tv_back)
+    @BindView(R.id.tv_back)
     TextView tvVack;
 
     int resourceId = 0;
@@ -42,7 +44,7 @@ public class VideoDetailActivity extends BaseActivity {
         tvVack.setVisibility(View.VISIBLE);
         tvTitle.setText("视频详情");
         resourceId = getIntent().getIntExtra("resourceId", 0);
-        L.e("resourceId===="+resourceId);
+        L.e("resourceId====" + resourceId);
         RequestNet();
     }
 
@@ -75,9 +77,27 @@ public class VideoDetailActivity extends BaseActivity {
             @Override
             public void failure(String msg) {
                 T.showShort("无法请求到详情信息");
-                onBackPressed();
+
+                videoplayer.setUp(AppConfig.video1, JCVideoPlayer.SCREEN_LAYOUT_LIST, "吉他弹窗");
+                Picasso.with(mContext).load(AppConfig.meinv2).into(videoplayer.thumbImageView);
+                tvContext.setText("视频加载失败，显示的是展示视频");
+//                onBackPressed();
                 return;
             }
         });
+    }
+
+    @Override
+    public void onBackPressed() {
+        if (JCVideoPlayer.backPress()) {
+            return;
+        }
+        super.onBackPressed();
+    }
+
+    @Override
+    protected void onDestroy() {
+        JCVideoPlayerManager.completeAll();
+        super.onDestroy();
     }
 }

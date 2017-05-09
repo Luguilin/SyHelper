@@ -38,14 +38,17 @@ public class PhotoActivity extends AppCompatActivity {
         initData();
     }
 
-    int currentPosition=0;
+    int currentPosition = 0;
     MyImageAdapter myImageAdapter;
     private List<String> Urls;
+
     private void initData() {
-        Urls=new ArrayList<>();
-        Urls.addAll(AppConfig.mImage);
+        Urls = new ArrayList<>();
+//        Urls.addAll(AppConfig.mImage);
         Intent intent = getIntent();
         currentPosition = intent.getIntExtra("currentPosition", 0);
+        Urls = intent.getStringArrayListExtra("Urls");
+        if (Urls == null || Urls.size() <= 0) finish();
 //        HomeQuestionListModel.DataBeanX DataBean = ((HomeQuestionListModel.DataBeanX) intent.getSerializableExtra("questionlistdataBean"));
 //        Urls = DataBean.getAttach().getImage().getOri();
 

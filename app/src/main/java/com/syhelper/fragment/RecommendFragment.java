@@ -11,10 +11,13 @@ import android.widget.ListView;
 
 import com.syhelper.DataListener;
 import com.syhelper.R;
+import com.syhelper.ResType;
+import com.syhelper.ResTypeHelper;
 import com.syhelper.activity.VideoDetailActivity;
 import com.syhelper.adapter.RecommendAdapter;
 import com.syhelper.api.ApiRecommends;
 import com.syhelper.bean.Recommend;
+import com.syhelper.bean.RecommendMap;
 import com.syhelper.httpBean.RecommendResponse;
 import com.syhelper.tool.T;
 
@@ -45,25 +48,36 @@ public class RecommendFragment extends BaseFragment {
     ApiRecommends apiRecommends = new ApiRecommends();
 
 
-    List<Recommend> mData=new ArrayList<>();
-
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         mView = inflater.inflate(R.layout.fragment_recom, container, false);
         ButterKnife.bind(this, mView);
 
-
-        mAdapter = new RecommendAdapter(mData,mContext);
+        mAdapter = new RecommendAdapter(recommendMaps, mContext);
         mListView.setAdapter(mAdapter);
-        mListView.addHeaderView(LayoutInflater.from(mContext).inflate(R.layout.layout_serach,mListView,false));
+        mListView.addHeaderView(LayoutInflater.from(mContext).inflate(R.layout.layout_serach, mListView, false));
 
         mListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Intent intent = new Intent(mContext, VideoDetailActivity.class);
-                intent.putExtra("resourceId", 158);
-                startActivity(intent);
+                RecommendMap recommendMap = (RecommendMap) parent.getItemAtPosition(position);
+                Intent intent = null;
+                switch (recommendMap.getType()) {
+                    case Picture:
+                        break;
+                    case VIDEO:
+                        intent = new Intent(mContext, VideoDetailActivity.class);
+                        intent.putExtra("resourceId", recommendMap.getRecommend().getRescontrnId()+"");
+                        break;
+                    case recMasterShow:
+                        break;
+                    case Route:
+                        break;
+                    default:
+                        break;
+                }
+                if (intent != null) startActivity(intent);
             }
         });
 
@@ -78,7 +92,7 @@ public class RecommendFragment extends BaseFragment {
 
             @Override
             public void onLoadMoreBegin(PtrFrameLayout frame) {
-//                RequestData4Net();
+                RequestData4Net();
             }
         });
 //        mPtrFrame.setPullToRefresh(false);
@@ -90,21 +104,47 @@ public class RecommendFragment extends BaseFragment {
     int count = 5;
     int startIndex = 0;
 
+    List<RecommendMap> recommendMaps = new ArrayList<>();
+
     private void RequestData4Net() {
         ShowLoading();
         apiRecommends.fetch(startIndex, count, new DataListener<RecommendResponse>() {
             @Override
             public void attach(RecommendResponse object) {
-                DismissLoading();
 
-                if (object.getNowPage()==1)mData.clear();
-                if (object.getData() != null) mData.addAll(object.getData());
+                List<Recommend> temp_rec = object.getData();
+
+                if (object.getNowPage() == 1) recommendMaps.clear();
+
+                for (int i = 0; i < temp_rec.size(); i++) {
+                    RecommendMap recommendMap = new RecommendMap();
+                    String type = temp_rec.get(i).getType();
+                    ResType resType = ResTypeHelper.getType(type);
+                    recommendMap.setRecommend(temp_rec.get(i));
+                    recommendMap.setType(resType);
+                    switch (resType) {
+                        case recMasterShow:
+                            recommendMap.setMasterShow(object.getMasterShows().get(temp_rec.get(i).getRescontrnId() + ""));
+                            break;
+                        case VIDEO:
+                            recommendMap.setVideo(object.getVideos().get(temp_rec.get(i).getRescontrnId() + ""));
+                            break;
+                        case Picture:
+                            recommendMap.setShowImages(object.getImageShowImages().get(temp_rec.get(i).getRescontrnId() + ""));
+                            break;
+                        case Route:
+                            recommendMap.setRoute(object.getRoutes().get(temp_rec.get(i).getRescontrnId() + ""));
+                            break;
+                    }
+                    recommendMaps.add(recommendMap);
+                }
+
+                DismissLoading();
                 mAdapter.setResponse(object);
 
                 mPtrFrame.refreshComplete();
                 mAdapter.notifyDataSetChanged();
-
-                startIndex = object.getNowIndex()+1;
+                startIndex = object.getNowIndex() + 1;
             }
 
             @Override
