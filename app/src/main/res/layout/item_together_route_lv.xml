@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:orientation="vertical">
+    <TextView
+        android:id="@+id/tv_explanation"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="10dip"
+        android:text="桂林山水是对桂林旅游资源的总称。[1]  国家AAAAA级旅游景区，中国十大风景名胜之一，桂林山水是中国山水的代表"
+        android:textColor="@color/font_black"/>
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="250dip">
+        <ImageView
+            android:id="@+id/iv_together_image"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scaleType="centerCrop"/>
+        <TextView
+            android:id="@+id/tv_hText"
+            android:layout_width="match_parent"
+            android:layout_height="30dip"
+            android:layout_gravity="bottom"
+            android:background="#80000000"
+            android:gravity="center"
+            android:text="桂林山水"
+            android:textColor="@color/white"/>
+    </FrameLayout>
+    <TextView
+        android:id="@+id/tv_uploaderName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="5dip"
+        android:text="何乐聪"
+        android:textColor="#195f94"
+        android:textSize="18sp"
+        android:textStyle="bold"/>
+    <TextView
+        android:id="@+id/tv_updateTime"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+        android:text="2017-12-5  12:4:45"/>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dip"
+        android:background="@color/theme_gray"/>
+    <include layout="@layout/layout_zan_five"/>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="10dip"
+        android:background="@color/theme_gray"/>
+</LinearLayout>

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<EditText
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/et_search"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="5dip"
+    android:layout_marginLeft="10dip"
+    android:layout_marginRight="10dip"
+    android:layout_marginTop="5dip"
+    android:maxLines="1"
+    android:lines="1"
+    android:background="@drawable/drawable_edit_home_bg"
+    android:hint="请输入要搜索关键字"
+    android:imeOptions="actionSearch"
+    android:padding="5dp"/>

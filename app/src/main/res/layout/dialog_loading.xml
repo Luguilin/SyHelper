@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/dialog_bg_l2"
+    android:gravity="center"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:id="@+id/loading"
+        android:layout_width="100dip"
+        android:layout_height="100dip"
+        android:gravity="center"
+        android:orientation="vertical">
+
+        <ProgressBar
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center" />
+
+        <TextView
+            android:id="@+id/message"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="请稍后..."
+            android:textColor="@color/green_theme" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/complete"
+        android:layout_width="100dip"
+        android:layout_height="100dip"
+        android:gravity="center"
+        android:visibility="gone"
+        android:orientation="vertical">
+
+        <ImageView
+            android:id="@+id/iv_complete"
+            android:layout_width="50dip"
+            android:layout_height="50dip"
+            android:src="@mipmap/icon_complete" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="成功"
+            android:textColor="#019346" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/failure"
+        android:layout_width="100dip"
+        android:layout_height="100dip"
+        android:gravity="center"
+        android:visibility="gone"
+        android:orientation="vertical">
+
+        <ImageView
+            android:id="@+id/iv_failure"
+            android:layout_width="50dip"
+            android:layout_height="50dip"
+            android:src="@mipmap/icon_failure" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="失败"
+            android:textColor="#F00" />
+    </LinearLayout>
+
+</FrameLayout>

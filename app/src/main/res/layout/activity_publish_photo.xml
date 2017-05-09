@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/theme_gray"
+    android:orientation="vertical"
+    tools:context="com.syhelper.activity.PublishPhotoActivity">
+    <include layout="@layout/layout_title"/>
+    <EditText
+        android:id="@+id/et_publish_text"
+        android:layout_width="match_parent"
+        android:layout_height="150dp"
+        android:background="@color/white"
+        android:gravity="left|start"
+        android:hint="说点什么吧"
+        android:maxLength="500"
+        android:padding="10dip"/>
+    <TextView
+        android:id="@+id/tv_add_photo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        android:text="添加照片"
+        android:textColor="@color/font_black"
+        android:textSize="18sp"/>
+    <GridView
+        android:id="@+id/gv_image_result"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:numColumns="3"/>
+</LinearLayout>

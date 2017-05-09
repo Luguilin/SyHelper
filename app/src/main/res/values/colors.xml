@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#0194de</color>
+    <color name="colorPrimaryDark">#0194de</color>
+    <color name="colorAccent">#0194de</color>
+
+
+    <!-- 主题色 -->
+    <color name="green_theme">#0194de</color>
+    <!-- 黑色   字体 -->
+    <color name="font_black">#3d3d3d</color>
+    <!-- 主题灰 -->
+    <color name="theme_gray">#f2f2f2</color>
+    <color name="white">#ffffff</color>
+    <!-- 筛选的popupwindow背景颜色 -->
+    <color name="pop_screen">#f1f1f1</color>
+    <!-- 红色    警告 -->
+    <color name="theme_red">#E64824</color>
+    <!-- 橙色    警告 -->
+    <color name="theme_orange">#E4B638</color>
+    <!-- 灰色   字体 -->
+    <color name="fond_gray">#9a9a9a</color>
+
+    <!-- 个人中心字体颜色 -->
+    <color name="font_user_black">#666666</color>
+
+    <color name="theme_black">#000000</color>
+
+    <color name="text_green">#2fab6e</color>
+</resources>

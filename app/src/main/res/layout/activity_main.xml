@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.syhelper.activity.MainActivity">
+
+
+    <FrameLayout
+        android:id="@+id/flay_main"
+        android:layout_width="match_parent"
+        android:layout_height="0dip"
+        android:layout_weight="1"/>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dip"
+        android:background="@color/theme_gray"/>
+    <RadioGroup
+        android:id="@+id/rg_tab"
+        android:layout_width="match_parent"
+        android:layout_height="50dip"
+        android:background="@color/white"
+        android:orientation="horizontal">
+        <RadioButton
+            android:id="@+id/rb_home"
+            android:layout_width="0dip"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:button="@null"
+            android:checked="true"
+            android:drawableTop="@drawable/selector_icon_home"
+            android:gravity="center"
+            android:paddingTop="8dip"
+            android:text="主页"
+            android:textColor="@drawable/selector_text_home"/>
+        <RadioButton
+            android:id="@+id/rb_collect"
+            android:layout_width="0dip"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:button="@null"
+            android:drawableTop="@drawable/selector_icon_recommend"
+            android:gravity="center"
+            android:paddingTop="8dip"
+            android:text="收藏"
+            android:textColor="@drawable/selector_text_home"/>
+        <RadioButton
+            android:id="@+id/rb_mine"
+            android:layout_width="0dip"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:button="@null"
+            android:drawableTop="@drawable/selector_icon_user_content"
+            android:gravity="center"
+            android:paddingTop="8dip"
+            android:text="我的"
+            android:textColor="@drawable/selector_text_home"/>
+    </RadioGroup>
+</LinearLayout>
