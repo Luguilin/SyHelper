@@ -1,6 +1,8 @@
 package com.syhelper.adapter;
 
 import android.content.Context;
+import android.text.Html;
+import android.widget.TextView;
 
 import com.squareup.picasso.Picasso;
 import com.syhelper.R;
@@ -32,9 +34,7 @@ public class VideoAdapter extends CommonAdapter<VideoItem> {
 
     @Override
     public void convert(ViewHolder holder, VideoItem videoItem) {
-
         holder.setText(R.id.tv_uploaderName, videoItem.getUploaderName());
-
         Video video = mVideoMap.get(videoItem.getRescontrnId() + "");
 
         if (video == null) return;
@@ -44,6 +44,10 @@ public class VideoAdapter extends CommonAdapter<VideoItem> {
                 , JCVideoPlayer.SCREEN_LAYOUT_LIST, video.getVideoTypeName());
         Picasso.with(mContext).load(ApiConfig.imageBaseUrl + video
                 .getVideoImageURL()).into(videoPlayerStandard.thumbImageView);
-        holder.setText(R.id.tv_explanation, video.getExplanation());
+
+        TextView tv_explanation=holder.getView(R.id.tv_explanation);
+        tv_explanation.setText(Html.fromHtml("<font color='black'>内容介绍：</font>" + video.getExplanation()));
+        videoPlayerStandard.titleTextView.setText("测试视频");
+        holder.setText(R.id.tv_uploaderName,video.getVideoTypeName());
     }
 }

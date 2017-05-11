@@ -13,6 +13,7 @@ import com.syhelper.DataListener;
 import com.syhelper.R;
 import com.syhelper.ResType;
 import com.syhelper.ResTypeHelper;
+import com.syhelper.activity.GreeVideoDetailActivity;
 import com.syhelper.activity.VideoDetailActivity;
 import com.syhelper.adapter.RecommendAdapter;
 import com.syhelper.api.ApiRecommends;
@@ -65,6 +66,7 @@ public class RecommendFragment extends BaseFragment {
                 Intent intent = null;
                 switch (recommendMap.getType()) {
                     case Picture:
+                        intent = new Intent(mContext, GreeVideoDetailActivity.class);
                         break;
                     case VIDEO:
                         intent = new Intent(mContext, VideoDetailActivity.class);

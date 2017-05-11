@@ -7,10 +7,10 @@ package com.syhelper.api;
 public class ApiConfig {
 
     public static final String IP = "112.74.49.238";
-    public static final int Port = 8080;
+    public static final int Port = 8081;
 
     public static final String basePath = "syhelp";
-    public static final String imageBaseUrl = "http://112.74.49.238:8080";
+    public static final String imageBaseUrl = "http://112.74.49.238:8081";
 
 
 

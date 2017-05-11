@@ -1,5 +1,6 @@
 package com.syhelper.fragment;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.view.LayoutInflater;
@@ -11,6 +12,7 @@ import android.widget.ListView;
 import com.handmark.pulltorefresh.library.PullToRefreshBase;
 import com.handmark.pulltorefresh.library.PullToRefreshListView;
 import com.syhelper.R;
+import com.syhelper.activity.RouteDetailActivity;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -33,7 +35,7 @@ public class RouteFragment extends BaseFragment implements PullToRefreshBase.OnR
         mRefreshListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-//                startActivity(new Intent(mContext, RouteDetailActivity.class));
+                startActivity(new Intent(mContext, RouteDetailActivity.class));
             }
         });
         return super.onCreateView(inflater, container, savedInstanceState);

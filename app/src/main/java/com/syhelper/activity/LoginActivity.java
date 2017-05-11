@@ -8,8 +8,10 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.syhelper.DataListener;
+import com.syhelper.MyApplication;
 import com.syhelper.R;
 import com.syhelper.api.ApiLoginUser;
+import com.syhelper.bean.User;
 import com.syhelper.httpBean.UserResponse;
 import com.syhelper.tool.L;
 import com.syhelper.tool.StringHelper;
@@ -52,7 +54,8 @@ public class LoginActivity extends BaseActivity {
                 DismissLoading();
                 if (object != null && object.isSuccess()) {
                     T.showShort("登陆成功");
-                    L.e("=getUserId==="+object.getUserId());
+                    MyApplication.setUser(new User());//假装有数据
+                    L.e("=getUserId===" + object.getUserId());
                     setResult(Activity.RESULT_OK);
                     finish();
                 } else {

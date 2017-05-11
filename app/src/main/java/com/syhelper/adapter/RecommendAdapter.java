@@ -2,6 +2,7 @@ package com.syhelper.adapter;
 
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.drawable.Drawable;
 import android.text.Html;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -113,6 +114,8 @@ public class RecommendAdapter extends BaseAdapter {
             default:
                 break;
         }
+        ButterKnife.bind(myHolder, convertView);
+        myHolder.BindDataAndEvent(mData.get(position).getRecommend());
         return convertView;
     }
 
@@ -146,7 +149,36 @@ public class RecommendAdapter extends BaseAdapter {
 
         @OnClick(R.id.textView3)
         public void Collect(View view) {
-            T.showShort("收藏成功");
+
+            if ((boolean) view.getTag(R.id.textView3)) {
+                textView3.setCompoundDrawables(getLeftDrawable(R.mipmap.icon_recommend), null, null, null);
+                view.setTag(R.id.textView3, false);
+            }else{
+                textView3.setCompoundDrawables(getLeftDrawable(R.mipmap.icon_recommend_selected), null, null, null);
+                view.setTag(R.id.textView3, true);
+                T.showShort("收藏成功");
+            }
+        }
+
+        private Drawable getLeftDrawable(int imageRes) {
+            Drawable rightDrawable = mContext.getResources().getDrawable(imageRes);
+            rightDrawable.setBounds(0, 0, rightDrawable.getMinimumWidth(), rightDrawable.getMinimumHeight());
+            return rightDrawable;
+        }
+
+        @OnClick(R.id.tv_likedCount)
+        public void LikedCount(View view) {
+
+            int lickCount = Integer.parseInt(tv_likedCount.getText().toString().trim());
+            if ((boolean) view.getTag(R.id.tv_likedCount)) {
+                tv_likedCount.setCompoundDrawables(getLeftDrawable(R.mipmap.icon_unprise), null, null, null);
+                view.setTag(R.id.tv_likedCount, false);
+                tv_likedCount.setText(String.valueOf(lickCount - 1));
+            }else{
+                tv_likedCount.setCompoundDrawables(getLeftDrawable(R.mipmap.icon_praised), null, null, null);
+                view.setTag(R.id.tv_likedCount, true);
+                tv_likedCount.setText(String.valueOf(lickCount + 1));
+            }
         }
 
         VideoHolder videoHolder = null;
@@ -157,6 +189,12 @@ public class RecommendAdapter extends BaseAdapter {
             tv_skimedCount.setText(recommend.getSkimedCount() + "");
             tv_likedCount.setText(recommend.getLikedCount() + "");
             tv_conmentCount.setText(recommend.getConmentCount() + "");
+
+            //收藏图标变化
+            textView3.setCompoundDrawables(getLeftDrawable(R.mipmap.icon_recommend), null, null, null);
+            textView3.setTag(R.id.textView3, false);
+            tv_likedCount.setCompoundDrawables(getLeftDrawable(R.mipmap.icon_unprise), null, null, null);
+            tv_likedCount.setTag(R.id.tv_likedCount, false);
         }
 
         public void BindBigPhotoViewItem(View view, List<ShowImage> images, Recommend recommend) {

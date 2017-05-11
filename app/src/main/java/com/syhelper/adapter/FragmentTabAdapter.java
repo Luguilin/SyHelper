@@ -51,6 +51,17 @@ public class FragmentTabAdapter implements CompoundButton.OnCheckedChangeListene
 //            ft.commitAllowingStateLoss();
         }
         currentIndex = index;
+        if (switchTabListener!=null)switchTabListener.SwitchTab(index);
+    }
+
+    SwitchTabListener switchTabListener;
+
+    public void setSwitchTabListener(SwitchTabListener switchTabListener) {
+        this.switchTabListener = switchTabListener;
+    }
+
+    public interface SwitchTabListener{
+        public void SwitchTab(int index);
     }
 
     private Fragment getCurrentFragment() {

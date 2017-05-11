@@ -9,9 +9,11 @@ import android.widget.RadioButton;
 import com.syhelper.MyApplication;
 import com.syhelper.R;
 import com.syhelper.adapter.FragmentTabAdapter;
+import com.syhelper.bean.User;
 import com.syhelper.fragment.CollectFragment;
 import com.syhelper.fragment.HomeFragment;
 import com.syhelper.fragment.MineFragment;
+import com.syhelper.tool.L;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -51,12 +53,13 @@ public class MainActivity extends BaseActivity {
 
         mTabAdapter = new FragmentTabAdapter(this, mFragments, mRadioButtons, R.id.flay_main, 0);
 
-        rbMine.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+        mTabAdapter.setSwitchTabListener(new FragmentTabAdapter.SwitchTabListener() {
             @Override
-            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                if (isChecked && MyApplication.getUser() == null){
-                    startActivity(new Intent(mContext, LoginActivity.class));
-//                    buttonView.setChecked(false);
+            public void SwitchTab(int index) {
+                if (index==2){//切换到我的页面了
+                    if (MyApplication.getUser() == null){
+                        startActivity(new Intent(mContext, LoginActivity.class));
+                    }
                 }
             }
         });

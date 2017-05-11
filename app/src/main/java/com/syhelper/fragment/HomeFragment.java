@@ -93,7 +93,7 @@ public class HomeFragment extends BaseFragment {
                     ((RadioButton)mRadioGroupTitle.getChildAt(i)).setTextSize(TypedValue.COMPLEX_UNIT_SP, 14);
                 }
 
-                if (JCVideoPlayerManager.getCurrentJcvd() != null) {
+                if (JCVideoPlayerManager.getCurrentJcvd() != null&&JCMediaManager.instance().mediaPlayer.isPlaying()) {
                     JCMediaManager.instance().mediaPlayer.pause();
                     JCVideoPlayerManager.getCurrentJcvd().onEvent(JCUserAction.ON_CLICK_PAUSE);
                     JCVideoPlayerManager.getCurrentJcvd().setUiWitStateAndScreen(JCVideoPlayer.CURRENT_STATE_PAUSE);

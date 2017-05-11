@@ -51,7 +51,6 @@ public class VideoFragment extends BaseFragment implements PullToRefreshBase.OnR
 
         mRefreshListView.setMode(PullToRefreshBase.Mode.BOTH);
         mRefreshListView.setOnRefreshListener(this);
-        L.e("VideoFragment");
         mRefreshListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
